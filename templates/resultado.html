@@ -1,0 +1,8 @@
+{% extendes "base.html" %}
+{% block title %}resultado{% endblock %}
+{% block content %}
+
+<p> Resultado del Formulario</p>
+<p>Gracias por enviar tu nombre, <strong>{{ nombre }}</strong></p>
+<a> href="{{ url_for('formulario') }}">Volver al formulario</a>
+{% endblock %}
