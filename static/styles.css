@@ -23,3 +23,31 @@ footer {
     color: white;
     padding: 15px;
 }
+
+/* Estilos para las etiquetas */
+form label {
+    margin-bottom: 5px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+
+/* Estilos para los campos de entrada */
+form input[type="text"],
+form input[type="number"] {
+    width: 20%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+/* Estilos específicos para el campo de edad */
+.form-group input[type="number"] {
+    width: 20%;
+    margin-left: 15px;
+    padding-right: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}

@@ -10,11 +10,19 @@
     <header>
         <h1>Mi Proyecto Flask</h1>
         <nav>
-            <a href="{{ url_for('home') }}">Inicio</a>
+            <a href="{{ url_for('index') }}">Inicio</a>
             <a href="{{ url_for('about') }}">Acerca de</a>
+             <a href="{{ url_for('formulario') }}">Formulario</a>
         </nav>
     </header>
     <main>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div style="color: green;">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         {% block content %}{% endblock %}
     </main>
     <footer>
