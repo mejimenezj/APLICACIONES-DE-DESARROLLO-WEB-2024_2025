@@ -7,21 +7,19 @@ from flask_sqlalchemy import SQLAlchemy
 import json
 import csv
 import os
+from Conexion import conexion  # Importa la función conectar de conexion.py
+
 
 # Crear la aplicación Flask
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'tu_clave_secreta_aqui'  # Necesario para CSRF
 
-# Configuración de SQLAlchemy
-basedir = os.path.abspath(os.path.dirname(__file__))  # Ruta base del proyecto
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(basedir, 'database', 'usuarios.db')}"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-# Inicializar SQLAlchemy
-db = SQLAlchemy(app)
+# Inicializar la conexión con la base de datos usando la función conectar
+db = conexion.conectar(app)
 
 # Definir el modelo de la tabla `usuarios`
 class Usuario(db.Model):
+    __tablename__ = 'usuario'
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(100), nullable=False)
     edad = db.Column(db.Integer, nullable=False)
@@ -124,5 +122,6 @@ def about():
 # Crear la base de datos y la tabla (solo la primera vez)
 if __name__ == "__main__":
     with app.app_context():
-        db.create_all()
+        db.create_all()  # Esto creará la tabla 'usuario' en la base de datos
     app.run(debug=True)
+
