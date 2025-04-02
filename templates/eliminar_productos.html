@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card border-danger">
+        <div class="card-header bg-danger text-white">
+            <h3>Confirmar Eliminación</h3>
+        </div>
+        <div class="card-body">
+            <p>¿Estás seguro de eliminar este producto?</p>
+            
+            <table class="table table-bordered">
+                <tr>
+                    <th>ID</th>
+                    <td>{{ producto.id_producto }}</td>
+                </tr>
+                <tr>
+                    <th>Nombre</th>
+                    <td>{{ producto.nombre }}</td>
+                </tr>
+                <tr>
+                    <th>Precio</th>
+                    <td>${{ "%.2f"|format(producto.precio) }}</td>
+                </tr>
+                <tr>
+                    <th>Stock</th>
+                    <td>{{ producto.stock }}</td>
+                </tr>
+            </table>
+            
+            <form method="POST" action="{{ url_for('eliminar_producto', id=producto.id_producto) }}">
+                <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-trash-alt"></i> Confirmar Eliminación
+                </button>
+                <a href="{{ url_for('productos') }}" class="btn btn-secondary">
+                    <i class="fas fa-times"></i> Cancelar
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
