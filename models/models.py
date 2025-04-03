@@ -4,7 +4,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 class Usuario(UserMixin):
     def __init__(self, id_usuario, nombre, email, password):
-        self.id = id_usuario
+        self.id = id_usuario  
         self.nombre = nombre
         self.email = email
         self.password = password
@@ -19,7 +19,7 @@ class Usuario(UserMixin):
             try:
                 with conexion.cursor(dictionary=True) as cursor:
                     cursor.execute(
-                        "SELECT id_usuario, nombre, email, password FROM usuarios WHERE email = %s",
+                        "SELECT id_usuario, nombre, email, password FROM usuarios WHERE email = %s", 
                         (email,)
                     )
                     usuario = cursor.fetchone()
@@ -44,7 +44,7 @@ class Usuario(UserMixin):
             try:
                 with conexion.cursor(dictionary=True) as cursor:
                     cursor.execute(
-                        "SELECT id_usuario, nombre, email, password FROM usuarios WHERE id_usuario = %s",
+                        "SELECT id_usuario, nombre, email, password FROM usuarios WHERE id_usuario = %s", 
                         (id_usuario,)
                     )
                     usuario = cursor.fetchone()
