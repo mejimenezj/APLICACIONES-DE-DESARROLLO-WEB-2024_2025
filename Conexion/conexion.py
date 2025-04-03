@@ -1,11 +1,14 @@
-from flask_sqlalchemy import SQLAlchemy
+import mysql.connector
 
-db = SQLAlchemy()
-
-def conectar(app):
-    # Configurar la base de datos MySQL
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:admin@127.0.0.1:3306/desarrollo_web'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    db.init_app(app)  # Inicializa la conexión con la aplicación Flask
-
-    return db
+def obtener_conexion():
+    try:
+        conexion = mysql.connector.connect(
+            host="localhost",  # O la IP del servidor MySQL
+            user="root",       # Usuario de MySQL
+            password="admin",       # Contraseña de MySQL (déjala vacía si no tiene)
+            database="desarrollo_web"  # Nombre de tu base de datos
+        )
+        return conexion
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        return None
