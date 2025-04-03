@@ -8,46 +8,33 @@ body {
 header {
     background-color: #333;
     color: white;
-    padding: 15px;
+    padding: 1em 0;
 }
 
-nav a {
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
     margin: 0 10px;
+}
+
+nav ul li a {
     color: white;
     text-decoration: none;
 }
 
+main {
+    padding: 20px;
+}
+
 footer {
-    margin-top: 30px;
     background-color: #333;
     color: white;
-    padding: 15px;
-}
-
-/* Estilos para las etiquetas */
-form label {
-    margin-bottom: 5px;
     padding: 10px;
-    font-weight: bold;
-}
-
-
-/* Estilos para los campos de entrada */
-form input[type="text"],
-form input[type="number"] {
-    width: 20%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-/* Estilos específicos para el campo de edad */
-.form-group input[type="number"] {
-    width: 20%;
-    margin-left: 15px;
-    padding-right: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
