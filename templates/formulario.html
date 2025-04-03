@@ -1,28 +1,24 @@
-{% extends "base.html" %}  <!-- Corregido: base.html, no base,html -->
-{% block title %} Formulario {% endblock %}
+{% extends "base.html" %}
+
+{% block title %}Formulario{% endblock %}
 
 {% block content %}
     <h2>Formulario</h2>
-<form method="POST">
-    {{ form.hidden_tag() }}
-    <div>
-        {{ form.nombre.label }}: {{ form.nombre() }}
-    </div>
-    <div class="form-group">
-        {{ form.edad.label }}: {{ form.edad() }}
-    </div>
-    <div>
-        {{ form.ciudad.label }}: {{ form.ciudad() }}
-    </div>
-    <div>
-        {{ form.submit() }}
-    </div>
-</form>
-
-    {% with messages = get_flashed_messages(with_categories=true) %}  <!-- Corregido: get_flashed_messages -->
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.nombre.label }}<br>
+            {{ form.nombre(size=30) }}
+            {% for error in form.nombre.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for category, message in messages %}
-                <p style="color: green;">{{ message }}</p>  <!-- Corregido: style="color: green;" -->
+                <p style="color: green;">{{ message }}</p>
             {% endfor %}
         {% endif %}
     {% endwith %}

@@ -1,10 +1,28 @@
-
 {% extends "base.html" %}
 
 {% block title %}Inicio{% endblock %}
 
 {% block content %}
-    <a href="{{ url_for('index') }}">Inicio</a>
-    <h2>Bienvenido a la Página de Inicio</h2>
-    <p>Esta es la página principal de nuestro sitio Flask.</p>
+<div class="container mt-4">
+    <h2>Bienvenido a la aplicación</h2>
+    
+    <!-- Estado de sesión -->
+    <div class="auth-status mt-3">
+        {% if current_user.is_authenticated %}
+            <div class="alert alert-success">
+                <p>Has iniciado sesión como: <strong>{{ current_user.nombre }}</strong></p>
+                <a href="{{ url_for('logout') }}" class="btn btn-danger btn-sm">
+                    Cerrar Sesión
+                </a>
+            </div>
+        {% else %}
+            <div class="alert alert-info">
+                <p>No has iniciado sesión</p>
+                <a href="{{ url_for('login') }}" class="btn btn-primary btn-sm">
+                    Iniciar Sesión
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
